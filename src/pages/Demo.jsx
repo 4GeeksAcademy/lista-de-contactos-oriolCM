@@ -8,36 +8,32 @@ export const Demo = () => {
 
   return (
     <div className="container">
-      <ul className="list-group">
-        {/* Map over the 'todos' array from the store and render each item as a list element */}
-        {store && store.todos?.map((item) => {
-          return (
-            <li
-              key={item.id}  // React key for list items.
-              className="list-group-item d-flex justify-content-between"
-              style={{ background: item.background }}> 
-              
-              {/* Link to the detail page of this todo. */}
-              <Link to={"/single/" + item.id}>Link to: {item.title} </Link>
-              
-              <p>Open file ./store.js to see the global store that contains and updates the list of colors</p>
-              
-              <button className="btn btn-success" 
-                onClick={() => dispatch({
-                  type: "add_task", 
-                  payload: { id: item.id, color: '#ffa500' }
-                })}>
-                Change Color
-              </button>
-            </li>
-          );
-        })}
-      </ul>
+      <h1 className="text-center">Añade un nuevo contacto</h1>
+      <form>
+        <div className="form-group">
+          <label for="name" className="mb-1">Nombre completo</label>
+          <input type="text" className="form-control mb-3" id="inputName" aria-describedby="emailHelp" placeholder="Nombre Completo"/>
+        </div>
+        <div className="form-group">
+          <label for="email" className="mb-1">Email</label>
+          <input type="text" className="form-control mb-3" id="inoutEmail" placeholder="Introduce tu email"/>
+        </div>
+        <div className="form-group">
+          <label for="phone" className="mb-1">Telefono</label>
+          <input type="text" className="form-control mb-3" id="inputPhone" placeholder=" Introduce tu telefono"/>
+        </div>
+        <div className="form-group">    
+          <label for="adress" className="mb-1">Dirección</label>    
+          <input type="text" className="form-control mb-3" id="inputAdress" placeholder="Introduce tu dreccion"/>
+        </div>
+      </form>
       <br />
-
-      <Link to="/">
-        <button className="btn btn-primary">Back home</button>
+      <div>
+        <Link to="/">
+        <button className="btn btn-danger">Volver a los contactos</button>
       </Link>
+      <button type="submit" className="btn btn-primary mx-5">Guardar contacto</button>
+      </div>
     </div>
   );
 };
